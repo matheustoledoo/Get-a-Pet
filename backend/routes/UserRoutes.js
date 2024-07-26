@@ -4,7 +4,7 @@ const UserController = require("../controllers/UserController");
 
 // middlewares
 const verifyToken = require("../helpers/verify-token");
-//const { imageUpload } = require("../helpers/image-upload");
+const { imageUpload } = require("../helpers/image-upload");
 
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
@@ -15,7 +15,7 @@ router.get("/:id", UserController.getUserById);
  router.patch(
   "/edit/:id",
   verifyToken,
- //imageUpload.single("image"),
+  imageUpload.single("image"),
   UserController.editUser
  );
 

@@ -177,6 +177,10 @@ module.exports = class UserController {
 
             let image = ''
 
+            if(req.file){
+                user.image = req.file.filename
+            }
+
             // validations
             if (!name) {
                 res.status(422).json({ message: 'O nome é obrigatório!' })
@@ -212,12 +216,13 @@ module.exports = class UserController {
           
               user.phone = phone
 
-               // check if password match
+     // check if password match          
     if (password != confirmpassword) {
         res.status(422).json({ error: 'As senhas não conferem.' })
   
         // change password
       } else if (password == confirmpassword && password != null) {
+
         // creating password
         const salt = await bcrypt.genSalt(12)
         const reqPassword = req.body.password
@@ -228,6 +233,7 @@ module.exports = class UserController {
        }
   
        try {
+
            // returns updated data
            const updatedUser = await User.findOneAndUpdate(
              { _id: user._id },
@@ -238,8 +244,11 @@ module.exports = class UserController {
              message: 'Usuário atualizado com sucesso!',
              data: updatedUser,
           })
+
          } catch (error) {
+
           res.status(500).json({ message: error })
+
          }
 
          }
