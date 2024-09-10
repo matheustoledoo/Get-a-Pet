@@ -3,7 +3,7 @@ import { useState } from 'react'
 import formStyles from './Form.module.css'
 
 import Input from './Input'
-import Select from './Select'
+import SelectBox from './Select' // Importando o seu componente SelectBox
 
 function PetForm({ handleSubmit, petData, btnText }) {
   const [pet, setPet] = useState(petData || {})
@@ -23,7 +23,7 @@ function PetForm({ handleSubmit, petData, btnText }) {
   function handleColor(e) {
     setPet({
       ...pet,
-      color: e.target.options[e.target.selectedIndex].text,
+      color: e.target.value, // Usando o value direto do SelectBox
     })
   }
 
@@ -83,12 +83,13 @@ function PetForm({ handleSubmit, petData, btnText }) {
         value={pet.weight || ''}
         handleOnChange={handleChange}
       />
-      <Select
+      {/* Usando SelectBox com as opções de cores */}
+      <SelectBox
+        label="Selecione a cor"
         name="color"
-        text="Selecione a categoria"
         options={colors}
-        handleOnChange={handleColor}
-        value={pet.color || ''}
+        onChange={handleColor}
+        selectedValue={pet.color || ''}
       />
       <input type="submit" value={btnText} />
     </form>

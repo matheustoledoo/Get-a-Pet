@@ -1,25 +1,22 @@
-import { Link } from 'react-router-dom'
-import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import styles from './Navbar.module.css';
+import Logo from '../../assets/images/logo.png';
 
-import styles from './Navbar.module.css'
+/* Contexto do usuário */
+import { Context } from '../../context/UserContext';
 
-import Logo from '../../assets/images/logo.png'
-
-/* contexts */
-import { Context } from '../../context/UserContext'
-
-/* hooks */
-
-function Navbar() {
-  const { authenticated, logout } = useContext(Context)
+// Componente de barra de navegação
+const Navbar = () => {
+  const { authenticated, logout } = useContext(Context);
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles.navbar_logo}>
-        <img src={Logo} alt="Get A Pet" />
-        <h2>Get A Pet</h2>
+      <div className={styles.navbarLogo}>
+        <img src={Logo} alt="Patas Unidas" />
+        <h2>Patas Unidas</h2>
       </div>
-      <ul>
+      <ul className={styles.navLinks}>
         <li>
           <Link to="/">Adotar</Link>
         </li>
@@ -42,13 +39,13 @@ function Navbar() {
               <Link to="/login">Entrar</Link>
             </li>
             <li>
-              <Link to="/register">Registar</Link>
+              <Link to="/register">Registrar</Link>
             </li>
           </>
         )}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

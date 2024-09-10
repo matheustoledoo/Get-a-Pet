@@ -1,9 +1,13 @@
-import styles from "./Container.module.css";
+import styles from './Container.module.css';
 
-function Container({children}) {
-  return <main className={styles.container}>
+// Componente principal de container para envolver outros componentes
+const Container = ({ children }) => {
+  return (
+    <main className={styles.container}>
+      {/* Renderiza os componentes filhos passados como prop */}
       {children}
-  </main>
-}
+    </main>
+  );
+};
 
-export default Container
+export default Container;

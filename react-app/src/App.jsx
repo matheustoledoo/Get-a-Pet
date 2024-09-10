@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-/* components */
+/* Importação de componentes */
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Message from './components/layout/Message';
 import Container from './components/layout/Container';
 
-/* pages */
+/* Importação de páginas */
 import Home from './components/pages/Home';
 import Login from './components/pages/Auth/Login';
 import Register from './components/pages/Auth/Register';
@@ -18,10 +18,10 @@ import EditPet from './components/pages/Pet/EditPet';
 import PetDetails from './components/pages/Pet/PetDetails';
 import MyAdoptions from './components/pages/Pet/MyAdoptions';
 
-/* contexts */
+/* Importação de contextos */
 import { UserProvider } from './context/UserContext';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <UserProvider>
@@ -29,6 +29,7 @@ function App() {
         <Message />
         <Container>
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user/profile" element={<Profile />} />
@@ -37,13 +38,12 @@ function App() {
             <Route path="/pet/mypets" element={<MyPets />} />
             <Route path="/pet/myadoptions" element={<MyAdoptions />} />
             <Route path="/pet/:id" element={<PetDetails />} />
-            <Route path="/" element={<Home />} />
           </Routes>
         </Container>
         <Footer />
       </UserProvider>
     </Router>
   );
-}
+};
 
 export default App;

@@ -1,16 +1,19 @@
-.form_control {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
-  }
-  
-  .form_control label {
-    margin-bottom: 0.6em;
-    font-weight: bold;
-  }
-  
-  .form_control select {
-    padding: 0.7em;
-    border: 1px solid #777;
-    border-radius: 5px;
-  }
+/* Estilo para o controle do formulário */
+.formControl {
+  margin-bottom: 1.5em;
+}
+
+/* Estilo para o rótulo do campo de seleção */
+.formControl label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #6a0dad; /* Usando a nova cor roxa */
+}
+
+/* Estilo para o campo de seleção */
+.formControl select {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

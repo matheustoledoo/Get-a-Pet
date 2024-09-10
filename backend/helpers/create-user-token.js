@@ -1,20 +1,22 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
+// Função para criar um token JWT para o usuário
 const createUserToken = async (user, req, res) => {
-    
-    // create token
-    const token = jwt.sign(
-    // payload data
+  // Criação do token JWT com dados do payload
+  const token = jwt.sign(
     {
       name: user.name,
       id: user._id,
     },
-    "nossosecret"
+    'nossosecret',
+    {
+      expiresIn: '1d', // Define a expiração do token para 1 dia
+    }
   );
 
-  // return token
+  // Retorna o token e informações do usuário na resposta
   res.status(200).json({
-    message: "Você está autenticado!",
+    message: 'Autenticação bem-sucedida!',
     token: token,
     userId: user._id,
   });

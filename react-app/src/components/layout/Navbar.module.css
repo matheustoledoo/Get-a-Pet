@@ -1,43 +1,39 @@
+/* Estilo para a barra de navegação */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em 1.5em;
-    background-color: #FFD400;
-    color: #16479d;
-  }
-  
-  .navbar_logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar_logo img {
-    width: 40px;
-    margin-right: .8em;
-  }
-  
-  .navbar ul {
-    display: flex;
-    align-items: center;
-    list-style: none;
-  }
-  
-  .navbar li,
-  .navbar a {
-    text-decoration: none;
-    color: #16479d;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .5s;
-    padding: .5em .8em;
-    border-radius: 5px;
-  }
-  
-  .navbar li:hover {
-    background-color: #16479d;
-    color: #FFF;
-  }
-  
-  .navbar li:hover > a {
-    color: #FFF;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6a0dad;
+  padding: 10px 20px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
+
+.navbarLogo {
+  display: flex;
+  align-items: center;
+}
+
+.navbarLogo img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navLinks li {
+  cursor: pointer;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+}
+
+.navLinks li:hover {
+  text-decoration: underline;
+}

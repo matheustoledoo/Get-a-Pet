@@ -1,17 +1,26 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: Helvetica;
+  font-family: Helvetica, Arial, sans-serif;
   box-sizing: border-box;
+  
 }
 
 h1 {
-  color: #16479d;
+  color: #6a0dad; 
   margin-bottom: 1em;
   font-size: 2.1em;
 }
 
 .bold {
   font-weight: bold;
-  color: #16479d;
+  color: #6a0dad; 
 }
+
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  
+}
+

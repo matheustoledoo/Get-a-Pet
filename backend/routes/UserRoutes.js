@@ -1,22 +1,25 @@
-const router = require("express").Router();
+const express = require('express');
+const router = express.Router();
 
-const UserController = require("../controllers/UserController");
+const UserController = require('../controllers/User');
 
-// middlewares
-const verifyToken = require("../helpers/verify-token");
-const { imageUpload } = require("../helpers/image-upload");
+// Middlewares
+const verifyToken = require('../helpers/verify-token');
+const { imageUpload } = require('../helpers/image-upload');
 
-router.post("/register", UserController.register);
-router.post("/login", UserController.login);
-router.get("/checkuser", UserController.checkUser);
-router.get("/:id", UserController.getUserById);
+// Rota para registrar um novo usuário
+router.post('/register', UserController.register);
 
-// rota protegida
- router.patch(
-  "/edit/:id",
-  verifyToken,
-  imageUpload.single("image"),
-  UserController.editUser
- );
+// Rota para login de um usuário
+router.post('/login', UserController.login);
+
+// Rota para checar o usuário autenticado
+router.get('/checkuser', UserController.checkUser);
+
+// Rota para obter um usuário pelo ID
+router.get('/:id', UserController.getUserById);
+
+// Rota protegida para editar os dados de um usuário
+router.patch('/edit/:id', verifyToken, imageUpload.single('image'), UserController.editUser);
 
 module.exports = router;

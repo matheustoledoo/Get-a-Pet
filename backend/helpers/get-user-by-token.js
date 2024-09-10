@@ -1,18 +1,20 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-const User = require("../models/User");
-
-// get user by jwt token
+// Função para obter um usuário autenticado a partir do token
 const getUserByToken = async (token) => {
-  if (!token) return res.status(401).json({ error: "Acesso negado!" });
+  if (!token) {
+    throw new Error('Token não fornecido!');
+  }
 
-  // find user
-  const decoded = jwt.verify(token, "nossosecret");
-
+  // Decodifica o token para obter o ID do usuário
+  const decoded = jwt.verify(token, 'nossosecret');
   const userId = decoded.id;
 
-  const user = await User.findOne({ _id: userId });
+  // Busca o usuário no banco de dados pelo ID
+  const user = await User.findById(userId);
 
+  // Retorna o usuário sem a senha
   return user;
 };
 
